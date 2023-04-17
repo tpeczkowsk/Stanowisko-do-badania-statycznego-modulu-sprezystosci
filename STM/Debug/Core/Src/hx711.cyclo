@@ -1,0 +1,9 @@
+hx711.c:14:6:hx711_init	1
+hx711.c:29:10:hx711_get_raw_value	2
+hx711.c:48:13:hx711_wait_until_ready	2
+hx711.c:53:13:hx711_reset	1
+hx711.c:59:10:hx711_get_raw_value_average	2
+hx711.c:67:6:hx711_tare	1
+hx711.c:73:9:hx711_get_value	1
+hx711.c:78:9:hx711_get_value_average	1
+hx711.c:83:6:hx711_calibrate	1

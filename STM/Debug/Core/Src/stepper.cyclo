@@ -1,0 +1,8 @@
+stepper.c:11:6:stepper_init	1
+stepper.c:27:6:stepper_start_continous_mode	1
+stepper.c:37:6:stepper_stop	6
+stepper.c:44:6:stepper_set_direction	1
+stepper.c:48:6:stepper_set_speed	8
+stepper.c:66:6:stepper_start_angle_mode	2
+stepper.c:85:6:stepper_set_enable_HIGH	1
+stepper.c:89:6:stepper_set_enable_LOW	1
