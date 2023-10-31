@@ -2,7 +2,7 @@
 	"name": "praca-inz-app",
 	"productName": "praca-inz-app",
 	"version": "1.0.0",
-	"description": "Aplikacja do obslugi stanowiska",
+	"description": "Aplikacja desktopowa do stanowiska",
 	"main": "src/main.js",
 	"scripts": {
 		"start": "electron-forge start",

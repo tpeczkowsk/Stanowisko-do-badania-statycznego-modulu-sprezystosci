@@ -1,17 +1,66 @@
+@font-face {
+	font-family: "Lato";
+	src: url("Lato/Lato-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Lato";
+	src: url("Lato/Lato-Bold.ttf") format("truetype");
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: "Lato";
+	src: url("Lato/Lato-Italic.ttf") format("truetype");
+	font-style: italic;
+}
+
+* {
+	box-sizing: border-box;
+}
+
 body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	/* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; */
+	font-family: "Lato";
 	margin: auto;
-	padding: 2rem;
-	background-color: #121212;
+	padding: 0 2rem;
+	/* background-color: #121212; */
+	background-color: rgb(32, 33, 36);
 	color: white;
+	/* text-align: center; */
+}
+
+h1.title {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
 	text-align: center;
 }
 
 .card {
 	background-color: rgba(255, 255, 255, 0.03);
-	padding: 30px;
+	padding: 0 10px 10px 10px;
 	border: thin solid rgba(255, 255, 255, 0.15);
 	border-radius: 1em;
-	width: 30vh;
+	width: 30vw;
 	margin-bottom: 1em;
+	display: flex;
+	flex-direction: column;
+}
+.card-header {
+	font-size: large;
+	padding: 5px;
+	/* text-align: ; */
+	/* background-color: red; */
+	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+	margin-bottom: 0.4em;
+	font-weight: bold;
+}
+.card-content {
+	/* background-color: green; */
+	/* height: calc(100%-30px); */
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
