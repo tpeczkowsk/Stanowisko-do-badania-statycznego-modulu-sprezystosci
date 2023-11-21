@@ -9,68 +9,78 @@
 		<link rel="stylesheet" href="index.css" />
 	</head>
 	<body>
-		<h1 class="title">Stanowisko do wyznaczania statycznego modułu sprężystości</h1>
-		<div class="card">
-			<div class="card-header">Port szeregowy</div>
-			<div class="card-content">
-				<div>Port:</div>
-				<div>Prędkość:</div>
-				<div>Połącz</div>
-				<div>Status</div>
+		<div class="container">
+			<h1 class="title">Stanowisko do wyznaczania statycznego modułu sprężystości</h1>
+			<div class="card com">
+				<div class="card-header">Port szeregowy</div>
+				<div class="card-content">
+					<div>Port:</div>
+					<div>Prędkość:</div>
+					<button class="button">Połącz</button>
+					<div>Status</div>
+				</div>
+			</div>
+			<div class="card status">
+				<div class="card-header">Status maszyny</div>
+				<div class="card-content card-status">
+					<div class="div-status" style="background-color: gray">Brak połączenia</div>
+				</div>
+			</div>
+			<div class="card parameters">
+				<div class="card-header">Parametry maszyny</div>
+				<div class="card-content">
+					<div>Prędkość silnika krokowego</div>
+					<div>Bazowanie +</div>
+					<div>Bazowanie -</div>
+					<div></div>
+					<button class="button">Ustaw</button>
+				</div>
+			</div>
+			<div class="card control">
+				<div class="card-header">Panel sterowania</div>
+				<div class="card-content">
+					<button class="button button-control" style="background-color: #1cac78">Start</button>
+					<button class="button button-control" style="background-color: #cc0000">Stop</button>
+				</div>
+			</div>
+			<div class="card chart1">
+				<div class="card-header">Wykres siły</div>
+				<div class="card-content">
+					<div>Wykres</div>
+				</div>
+			</div>
+			<div class="card chart2">
+				<div class="card-header">Wykres odkształcenia</div>
+				<div class="card-content">
+					<div>Wykres</div>
+				</div>
+			</div>
+			<div class="card chart3">
+				<div class="card-header">Wykres modułu sprężystości</div>
+				<div class="card-content">
+					<div>Wykres</div>
+				</div>
+			</div>
+			<div class="card data">
+				<div class="card-header">Dane</div>
+				<div class="card-content card-data">
+					<br />
+					<div>Siła</div>
+					<br />
+					<div>Odkształcenie</div>
+					<br />
+					<div>Moduł</div>
+				</div>
+			</div>
+			<div class="card console-card">
+				<div class="card-header">Konsola</div>
+				<div class="card-content console">
+					<div style="font-family: monospace">Info: test</div>
+					<div style="font-family: monospace; color: orange">Warning: test</div>
+					<div style="font-family: monospace; color: brown">Error: test</div>
+				</div>
 			</div>
 		</div>
-		<div class="card">
-			<div class="card-header">Status maszyny</div>
-			<div class="card-content">fewferfewfewfewfew</div>
-		</div>
-		<div class="card">
-			<div class="card-header">Parametry maszyny</div>
-			<div class="card-content">
-				<div>Predkosc</div>
-				<div>Predkosc</div>
-				<div>Predkosc</div>
-				<div>Predkosc</div>
-				<div>Ustaw</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-header">Panel sterowania</div>
-			<div class="card-content">
-				<div>Start</div>
-				<div>Stop</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-header">Wykres siły</div>
-			<div class="card-content">
-				<div>Wykres</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-header">Wykres odkształcenia</div>
-			<div class="card-content">
-				<div>Wykres</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-header">Wykres modułu sprężystości</div>
-			<div class="card-content">
-				<div>Wykres</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-header">Dane</div>
-			<div class="card-content">
-				<div>Siła</div>
-				<div>Odkształcenie: <span style="font-size: 40px; font-weight: bold">619</span></div>
-				<div>Moduł:</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-header">Konsola</div>
-			<div class="card-content">
-				<div style="font-family: monospace; color: brown">Error: test</div>
-			</div>
-		</div>
+		<script src="renderer.js"></script>
 	</body>
 </html>

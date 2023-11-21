@@ -25,11 +25,21 @@ body {
 	/* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; */
 	font-family: "Lato";
 	margin: auto;
-	padding: 0 2rem;
+	padding: 0 15px;
 	/* background-color: #121212; */
 	background-color: rgb(32, 33, 36);
 	color: white;
+	height: 100vh;
+	overflow: hidden;
 	/* text-align: center; */
+}
+.container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr) 0.75fr;
+	grid-template-rows: 0.2fr repeat(3, 1fr) repeat(3, 0.5fr);
+	grid-column-gap: 15px;
+	grid-row-gap: 0px;
+	height: 100%;
 }
 
 h1.title {
@@ -43,8 +53,7 @@ h1.title {
 	padding: 0 10px 10px 10px;
 	border: thin solid rgba(255, 255, 255, 0.15);
 	border-radius: 1em;
-	width: 30vw;
-	margin-bottom: 1em;
+	margin-bottom: 15px;
 	display: flex;
 	flex-direction: column;
 }
@@ -63,4 +72,85 @@ h1.title {
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.console {
+	padding: 10px;
+	background-color: rgb(25, 25, 25);
+	width: 100%;
+	text-align: left;
+}
+
+.title {
+	grid-area: 1 / 1 / 2 / 4;
+}
+.chart1 {
+	grid-area: 2 / 1 / 4 / 2;
+}
+.chart2 {
+	grid-area: 2 / 2 / 4 / 3;
+}
+.chart3 {
+	grid-area: 4 / 1 / 7 / 2;
+}
+.data {
+	grid-area: 4 / 2 / 7 / 3;
+}
+.console-card {
+	grid-area: 7 / 1 / 8 / 3;
+}
+.com {
+	grid-area: 2 / 3 / 3 / 4;
+}
+.status {
+	grid-area: 3 / 3 / 4 / 4;
+}
+.parameters {
+	grid-area: 4 / 3 / 6 / 4;
+}
+.control {
+	grid-area: 6 / 3 / 8 / 4;
+}
+
+.card-status {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.div-status {
+	display: block;
+	border-radius: 5px;
+	padding: 20px 50px;
+	width: 300px;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.card-data {
+	margin: initial;
+	text-align: left;
+}
+
+.button {
+	background-color: beige;
+	border: none;
+	color: black;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	margin: 10px;
+	border-radius: 20px;
+}
+
+.button-control {
+	font-size: 24px;
+	color: white;
+	padding: 12px 24px;
+	border-radius: 26px;
 }
