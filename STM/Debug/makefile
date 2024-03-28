@@ -60,8 +60,8 @@ all: main-build
 main-build: inzynierka_test.elf secondary-outputs
 
 # Tool invocations
-inzynierka_test.elf inzynierka_test.map: $(OBJS) $(USER_OBJS) D:\STUDIA\Semestr\ 7\Praca\ Inzynierska\inzynierka_test\STM32H7A3ZITXQ_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "inzynierka_test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\STUDIA\Semestr 7\Praca Inzynierska\inzynierka_test\STM32H7A3ZITXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="inzynierka_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+inzynierka_test.elf inzynierka_test.map: $(OBJS) $(USER_OBJS) /Users/tpeczkowski/Dev/Inzynierka/Stanowisko-do-badania-statycznego-modulu-sprezystosci/STM/STM32H7A3ZITXQ_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "inzynierka_test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"/Users/tpeczkowski/Dev/Inzynierka/Stanowisko-do-badania-statycznego-modulu-sprezystosci/STM/STM32H7A3ZITXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="inzynierka_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

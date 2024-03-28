@@ -61,7 +61,6 @@ dkms.conf
 ehthumbs.db
 Thumbs.db
 
-@@ -0,0 +1,92 @@
 # Logs
 logs
 *.log
@@ -154,3 +153,6 @@ typings/
 
 # Electron-Forge
 out/
+
+STM/Debug/
+.metadata/

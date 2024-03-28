@@ -1,156 +1,182 @@
+:root {
+    --blue-color: #6699cc;
+    --green-color: #1cac78;
+    --status-grey: rgb(229, 229, 229);
+    --bg-color: white;
+    --color: black;
+    --card-bg: rgb(250, 250, 250);
+    --button-bg: #c4c4c4;
+}
 @font-face {
-	font-family: "Lato";
-	src: url("Lato/Lato-Regular.ttf") format("truetype");
-	font-weight: normal;
-	font-style: normal;
+    font-family: "Lato";
+    src: url("Lato/Lato-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-	font-family: "Lato";
-	src: url("Lato/Lato-Bold.ttf") format("truetype");
-	font-weight: bold;
+    font-family: "Lato";
+    src: url("Lato/Lato-Bold.ttf") format("truetype");
+    font-weight: bold;
 }
 
 @font-face {
-	font-family: "Lato";
-	src: url("Lato/Lato-Italic.ttf") format("truetype");
-	font-style: italic;
+    font-family: "Lato";
+    src: url("Lato/Lato-Italic.ttf") format("truetype");
+    font-style: italic;
 }
 
 * {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-	/* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; */
-	font-family: "Lato";
-	margin: auto;
-	padding: 0 15px;
-	/* background-color: #121212; */
-	background-color: rgb(32, 33, 36);
-	color: white;
-	height: 100vh;
-	overflow: hidden;
-	/* text-align: center; */
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; */
+    font-family: "Lato";
+    margin: auto;
+    padding: 0 15px;
+    /* background-color: #121212; */
+    background-color: var(--bg-color);
+    color: var(--color);
+    height: 100vh;
+    overflow: hidden;
+    /* text-align: center; */
 }
 .container {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr) 0.75fr;
-	grid-template-rows: 0.2fr repeat(3, 1fr) repeat(3, 0.5fr);
-	grid-column-gap: 15px;
-	grid-row-gap: 0px;
-	height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 0.75fr;
+    grid-template-rows: 0.2fr 1fr 0.8fr 1fr 0.8fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 0px;
+    height: 100%;
 }
 
 h1.title {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-	text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    text-align: center;
 }
 
 .card {
-	background-color: rgba(255, 255, 255, 0.03);
-	padding: 0 10px 10px 10px;
-	border: thin solid rgba(255, 255, 255, 0.15);
-	border-radius: 1em;
-	margin-bottom: 15px;
-	display: flex;
-	flex-direction: column;
+    background-color: var(--card-bg);
+    padding: 0 10px 10px 10px;
+    border: thin solid var(--button-bg);
+    border-radius: 1em;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 }
 .card-header {
-	font-size: large;
-	padding: 5px;
-	/* text-align: ; */
-	/* background-color: red; */
-	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-	margin-bottom: 0.4em;
-	font-weight: bold;
+    font-size: 24px;
+    padding: 5px;
+    /* text-align: ; */
+    /* background-color: red; */
+    border-bottom: 2px solid var(--button-bg);
+    margin-bottom: 0.4em;
+    font-weight: bold;
 }
 .card-content {
-	/* background-color: green; */
-	/* height: calc(100%-30px); */
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: auto;
-	margin-bottom: auto;
+    /* background-color: green; */
+    /* height: calc(100%-30px); */
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
-
-.console {
-	padding: 10px;
-	background-color: rgb(25, 25, 25);
-	width: 100%;
-	text-align: left;
-}
-
 .title {
-	grid-area: 1 / 1 / 2 / 4;
+    grid-area: 1 / 1 / 2 / 4;
 }
 .chart1 {
-	grid-area: 2 / 1 / 4 / 2;
+    grid-area: 2 / 1 / 4 / 2;
 }
 .chart2 {
-	grid-area: 2 / 2 / 4 / 3;
+    grid-area: 2 / 2 / 4 / 3;
 }
 .chart3 {
-	grid-area: 4 / 1 / 7 / 2;
+    grid-area: 4 / 1 / 6/ 2;
 }
 .data {
-	grid-area: 4 / 2 / 7 / 3;
+    grid-area: 4 / 2 / 6 / 3;
 }
-.console-card {
-	grid-area: 7 / 1 / 8 / 3;
-}
-.com {
-	grid-area: 2 / 3 / 3 / 4;
+.serial {
+    grid-area: 2 / 3 / 3 / 4;
 }
 .status {
-	grid-area: 3 / 3 / 4 / 4;
+    grid-area: 3 / 3 / 4 / 4;
 }
 .parameters {
-	grid-area: 4 / 3 / 6 / 4;
+    grid-area: 4 / 3 / 5 / 4;
 }
 .control {
-	grid-area: 6 / 3 / 8 / 4;
+    grid-area: 5 / 3 / 6/ 4;
 }
 
 .card-status {
-	margin-top: auto;
-	margin-bottom: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .div-status {
-	display: block;
-	border-radius: 5px;
-	padding: 20px 50px;
-	width: 300px;
-	font-size: 22px;
-	font-weight: bold;
+    display: block;
+    border-radius: 5px;
+    padding: 20px 50px;
+    width: 300px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: var(--status-grey);
 }
 
 .card-data {
-	margin: initial;
-	text-align: left;
+    margin: initial;
+    text-align: left;
 }
 
 .button {
-	background-color: beige;
-	border: none;
-	color: black;
-	padding: 10px 20px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	font-weight: bold;
-	cursor: pointer;
-	margin: 10px;
-	border-radius: 20px;
+    background-color: var(--button-bg);
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 20px;
 }
-
+.button:hover:not(:disabled) {
+    filter: brightness(90%);
+}
+.button:disabled:hover {
+    cursor: initial;
+}
 .button-control {
-	font-size: 24px;
-	color: white;
-	padding: 12px 24px;
-	border-radius: 26px;
+    font-size: 24px;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 26px;
+}
+.button-control:disabled {
+    filter: grayscale(80%);
+}
+.serial-content {
+    /* width: 100%; */
+    font-size: 18px;
+    text-align: left;
+}
+.serial-content div {
+    margin-bottom: 10px;
+}
+.serial-status-indicator {
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 0.3em;
+    height: 0.7em;
+    width: 0.7em;
+    background-color: red;
+}
+.serial-status {
+    text-align: right;
 }
