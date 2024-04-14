@@ -12,7 +12,8 @@
 
 #define SENDER_UART huart3
 
-void uart_handler_ping_pong(void);
+#define UART_BUFFER_SIZE 256
+
 void uart_handler_start_receiving(void);
 void uart_handler_transmit(uint8_t *data_ptr, uint16_t size);
 uint8_t uart_handler_get_data_received(void);

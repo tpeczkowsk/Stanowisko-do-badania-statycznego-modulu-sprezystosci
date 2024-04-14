@@ -154,5 +154,8 @@ typings/
 # Electron-Forge
 out/
 
-STM/Debug/
+STM/Debug
 .metadata/
+/STM/Debug
+*.cyclo
+*.mk

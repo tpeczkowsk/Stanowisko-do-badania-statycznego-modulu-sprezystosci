@@ -18,7 +18,6 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <uart_handler.h>
 #include "main.h"
 #include "adc.h"
 #include "dma.h"
@@ -34,6 +33,7 @@
 #include "hx711.h"
 #include "stepper.h"
 #include "string.h"
+#include "uart_handler.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -105,8 +105,8 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-//  sharp_ir_sensor_start();
-//  hx711_init(&loadcell, HX711_CLK_GPIO_Port, HX711_DT_GPIO_Port, HX711_CLK_Pin, HX711_DT_Pin, 0, 1);
+  sharp_ir_sensor_start();
+  hx711_init(&loadcell, HX711_CLK_GPIO_Port, HX711_DT_GPIO_Port, HX711_CLK_Pin, HX711_DT_Pin, 0);
   stepper_init(&stepper, &htim2, TIM_CHANNEL_1, &htim1, STEP_GPIO_Port, DIR_GPIO_Port, ENABLE_GPIO_Port, STEP_Pin, DIR_Pin, ENABLE_Pin);
   stepper_set_enable_LOW(&stepper);
   uart_handler_start_receiving();
@@ -116,21 +116,14 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-//	  HAL_Delay(500);
-////	  sprintf(text,"%ld",sharp_ir_sensor_get_raw());
-//	  sprintf(text,"%d",hx711_get_value_average(&loadcell,5));
-//	  uart_log(text);
-//	  stepper_start_angle_mode(&stepper, CW, 30, 360);
-//	  stepper_set_enable_HIGH(&stepper);
-//	  HAL_Delay(4000);
-//	  stepper_start_angle_mode(&stepper, CCW, 30, 360);
-//	  stepper_set_enable_HIGH(&stepper);
-//	  HAL_Delay(4000);
+	  // serial port polling
 	  if(uart_handler_get_data_received() == 1){
-		  uart_handler_ping_pong();
+		  // protocol handle data
 		  uart_handler_set_data_received(0);
-
+		  uart_handler_start_receiving();
 	  }
+	  // state machine
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -15,7 +15,7 @@
 
 #define STEPPER_MAX_SPEED	200
 
-#define STEP_PER_REV		200
+#define STEPS_PER_REV		200
 #define MICRO_STEP			32
 
 typedef enum {

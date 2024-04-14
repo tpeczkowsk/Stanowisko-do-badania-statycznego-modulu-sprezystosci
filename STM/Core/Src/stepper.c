@@ -69,7 +69,7 @@ void stepper_start_angle_mode(stepper_t *stepper, direction_t dir, uint32_t spee
 	stepper_set_direction(stepper, dir);
 	stepper_set_speed(stepper, speed);
 
-	stepper->steps_to_move = (angle * STEP_PER_REV * MICRO_STEP) / 360;
+	stepper->steps_to_move = (angle * STEPS_PER_REV * MICRO_STEP) / 360;
 
 	if(stepper->steps_to_move == 0){
 		stepper_stop(stepper);

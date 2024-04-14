@@ -13,7 +13,6 @@ var pollInitialConnectionInterval;
 
 var isPortOpen = false;
 
-// SerialPortMock.binding.createPort("/dev/test");
 serial_connect_button.addEventListener("click", connectToSelectedPort);
 
 function parseData(data) {
@@ -85,7 +84,6 @@ async function getSerialPortList() {
 
 function pollInitialConnection() {
     port.write("Ping", () => {
-        // port.port.emitData("Pong");
         console.log("Sent");
     });
 }

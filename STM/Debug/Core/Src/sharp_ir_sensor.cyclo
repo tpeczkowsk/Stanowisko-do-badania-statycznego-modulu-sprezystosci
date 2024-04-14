@@ -1,2 +1,2 @@
-sharp_ir_sensor.c:15:6:sharp_ir_sensor_start	1
-sharp_ir_sensor.c:21:10:sharp_ir_sensor_get_raw	1
+sharp_ir_sensor.c:14:6:sharp_ir_sensor_start	1
+sharp_ir_sensor.c:21:10:sharp_ir_sensor_get_raw	2
