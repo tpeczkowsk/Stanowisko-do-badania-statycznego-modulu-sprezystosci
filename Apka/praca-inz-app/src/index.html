@@ -38,11 +38,12 @@
             <div class="card parameters">
                 <div class="card-header">Parametry maszyny</div>
                 <div class="card-content">
-                    <!-- <div>Prędkość silnika krokowego</div>
-                    <div>Bazowanie +</div>
-                    <div>Bazowanie -</div>
-                    <div></div>
-                    <button disabled class="button">Ustaw</button> -->
+                    <div style="font-size: 20px">Prędkość silnika krokowego</div>
+                    <div><input style="font-size: 16px" class="speed-input" id="speed" type="number" value="10" /><label style="font-size: 16px" for="speed">mm/s</label></div>
+                    <button disabled class="button">Ustaw</button>
+                    <br />
+                    <button disabled class="button">Bazowanie +</button>
+                    <button disabled class="button">Bazowanie -</button>
                 </div>
             </div>
             <div class="card control">
@@ -55,30 +56,38 @@
             <div class="card chart1">
                 <div class="card-header">Wykres siły</div>
                 <div class="card-content">
-                    <div style="font-size: 20px">Wykres</div>
+                    <img src="./img/app_sila.png" height="350px" width="480px" />
                 </div>
             </div>
             <div class="card chart2">
                 <div class="card-header">Wykres odkształcenia</div>
                 <div class="card-content">
-                    <div style="font-size: 20px">Wykres</div>
+                    <img src="./img/app_odl.png" height="350px" width="480px" />
                 </div>
             </div>
             <div class="card chart3">
                 <div class="card-header">Wykres modułu sprężystości</div>
                 <div class="card-content">
-                    <div style="font-size: 20px">Wykres</div>
+                    <img src="./img/app_modul.png" height="350px" width="480px" />
                 </div>
             </div>
             <div class="card data">
                 <div class="card-header">Dane</div>
                 <div class="card-content card-data" style="font-size: 20px">
-                    <br />
-                    <div>Siła</div>
-                    <br />
-                    <div>Odkształcenie</div>
-                    <br />
-                    <div>Moduł</div>
+                    <div class="row-data">
+                        <div class="column-data">
+                            <div style="font-size: 30px">Czas</div>
+                            <div style="font-size: 30px">Siła</div>
+                            <div style="font-size: 30px">Odkształcenie</div>
+                            <div style="font-size: 30px">Sprężystość</div>
+                        </div>
+                        <div class="column-data">
+                            <div><span style="font-weight: bold; font-size: 30px">0.000</span> s</div>
+                            <div><span style="font-weight: bold; font-size: 30px">0.00</span> N</div>
+                            <div><span style="font-weight: bold; font-size: 30px">0.00</span> m</div>
+                            <div><span style="font-weight: bold; font-size: 30px">0.0</span> N/m</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

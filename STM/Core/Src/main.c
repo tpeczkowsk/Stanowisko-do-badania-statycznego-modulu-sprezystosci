@@ -110,6 +110,8 @@ int main(void)
   stepper_init(&stepper, &htim2, TIM_CHANNEL_1, &htim1, STEP_GPIO_Port, DIR_GPIO_Port, ENABLE_GPIO_Port, STEP_Pin, DIR_Pin, ENABLE_Pin);
   stepper_set_enable_LOW(&stepper);
   uart_handler_start_receiving();
+  HAL_Delay(1000);
+  hx711_tare(&loadcell);
   /* USER CODE END 2 */
 
   /* Infinite loop */

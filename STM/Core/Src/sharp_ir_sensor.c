@@ -9,7 +9,7 @@
 #include "tim.h"
 #include "stm32h7xx_hal.h"
 
-static uint32_t distance_raw[NB_OF_CONV] = {0};
+static uint16_t distance_raw[NB_OF_CONV] = {0};
 
 void sharp_ir_sensor_start(void){
 	HAL_ADCEx_Calibration_Start(&SENSOR_ADC, ADC_CALIB_OFFSET, ADC_SINGLE_ENDED);

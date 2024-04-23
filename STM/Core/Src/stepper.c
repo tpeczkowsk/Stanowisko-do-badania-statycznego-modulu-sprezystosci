@@ -46,39 +46,43 @@ void stepper_set_direction(stepper_t *stepper, direction_t dir){
 }
 
 void stepper_set_speed(stepper_t *stepper, uint32_t speed){
-
 	uint32_t timer_count, frequency;
-	 if(speed > STEPPER_MAX_SPEED){
-		 speed = STEPPER_MAX_SPEED;
-	 } else if(speed == 0) {
-		 stepper_stop(stepper);
-		 return;
-	 }
-
-	 frequency = (speed * (STEPPER_MAX_FREQ - STEPPER_MIN_FREQ)) / STEPPER_MAX_SPEED;
-	 timer_count = (HAL_RCC_GetPCLK1Freq() * 2) / (stepper->timer.htim->Init.Prescaler * frequency);
-
-	 __HAL_TIM_SET_COUNTER(stepper->timer.htim,0);
-	 __HAL_TIM_SET_AUTORELOAD(stepper->timer.htim, timer_count - 1);
-	 __HAL_TIM_SET_COMPARE(stepper->timer.htim, stepper->timer.channel, (timer_count / 2) - 1);
+	// Sprawdzenie przepełnienia
+	// Jeśli prędkośc 0 -> zatrzymac silnik
+	if(speed > STEPPER_MAX_SPEED){
+		speed = STEPPER_MAX_SPEED;
+	} else if(speed == 0) {
+		stepper_stop(stepper);
+		return;
+	}
+	// Wyliczenie częstotliwości timera względem max. prędkości
+	frequency = (speed * (STEPPER_MAX_FREQ - STEPPER_MIN_FREQ)) / STEPPER_MAX_SPEED;
+	// Wyliczenie wartości Counter period
+	timer_count = (HAL_RCC_GetPCLK1Freq() * 2) / (stepper->timer.htim->Init.Prescaler * frequency);
+	// Makra: zerowanie timera, przypisanie Counter period, przypisanie wypełnienia (50%)
+	__HAL_TIM_SET_COUNTER(stepper->timer.htim,0);
+	__HAL_TIM_SET_AUTORELOAD(stepper->timer.htim, timer_count - 1);
+	__HAL_TIM_SET_COMPARE(stepper->timer.htim, stepper->timer.channel, (timer_count / 2) - 1);
 }
 
 void stepper_start_angle_mode(stepper_t *stepper, direction_t dir, uint32_t speed, uint32_t angle){
-
+	// Ustawienie trybu ruchu kątowego
 	stepper->mode = ANGLE;
-	stepper_set_direction(stepper, dir);
-	stepper_set_speed(stepper, speed);
-
+	// Wyliczenie wymaganej liczby kroków
 	stepper->steps_to_move = (angle * STEPS_PER_REV * MICRO_STEP) / 360;
-
+	// Jeśli kroki są równe 0 -> brak ruchu
 	if(stepper->steps_to_move == 0){
 		stepper_stop(stepper);
 		return;
 	}
-
+	// Wywołanie funkcji ustawiających kierunek i prędkośc ruchu z przyjętych argumentów
+	stepper_set_direction(stepper, dir);
+	stepper_set_speed(stepper, speed);
+	// Wyzerowanie, ustawienie Counter period oraz uruchomienie podrzędnego timera w trybie przerwaniowym
 	__HAL_TIM_SET_COUNTER(stepper->slave_timer.htim, 0);
 	__HAL_TIM_SET_AUTORELOAD(stepper->slave_timer.htim, stepper->steps_to_move - 1);
 	HAL_TIM_Base_Start_IT(stepper->slave_timer.htim);
+	// Włączenie generowania sygnału PWM (STEP) timera głównego
 	HAL_TIM_PWM_Start(stepper->timer.htim, stepper->timer.channel);
 }
 

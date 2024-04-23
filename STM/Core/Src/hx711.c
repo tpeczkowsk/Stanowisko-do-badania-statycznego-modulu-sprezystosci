@@ -28,17 +28,22 @@ void hx711_init(hx711_t *loadcell, GPIO_TypeDef* CLK_port, GPIO_TypeDef* DT_port
 
 static uint32_t hx711_get_raw_value(hx711_t *loadcell){
 	uint32_t data = 0;
+	// Wywołanie funkcji oczekującej na gotowośc czujnika
 	hx711_wait_until_ready(loadcell);
+	// Pętla powtarzająca odczyt odpowiednią liczbę razy
 	for (int i = 0; i < 24; ++i) {
+		// Przesunięcie umożliwiające zapis do następnego bitu
 		data <<= 1;
+		// Odczyt z linii danych przy wysokim stanie linii zegarowej
 		HAL_GPIO_WritePin(loadcell->CLK_port, loadcell->CLK_pin, GPIO_PIN_SET);
+		// Zapis do zmiennej odczytanej wartości bitu
 		data += HAL_GPIO_ReadPin(loadcell->DT_port, loadcell->DT_pin);
 		HAL_GPIO_WritePin(loadcell->CLK_port, loadcell->CLK_pin, GPIO_PIN_RESET);
 	}
-	// set channel and gain
+	// Ustawienie kanału oraz wzmocnienia
 	HAL_GPIO_WritePin(loadcell->CLK_port, loadcell->CLK_pin, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(loadcell->CLK_port, loadcell->CLK_pin, GPIO_PIN_RESET);
-
+	// Konwersja do zmiennej bez znaku
 	data ^= 0x800000;
 	return data;
 }
@@ -52,6 +57,14 @@ static void hx711_reset(hx711_t *loadcell){
 	HAL_GPIO_WritePin(loadcell->CLK_port, loadcell->CLK_pin, GPIO_PIN_SET);
 	HAL_Delay(1);
 	HAL_GPIO_WritePin(loadcell->CLK_port, loadcell->CLK_pin, GPIO_PIN_RESET);
+}
+
+uint32_t hx711_get_value_average(hx711_t *loadcell, uint8_t no_samples){
+	uint64_t sum = 0;
+	for (int i = 0; i < no_samples; ++i) {
+		sum += hx711_get_value(loadcell);
+	}
+	return sum / no_samples;
 }
 
 static uint32_t hx711_get_raw_value_average(hx711_t *loadcell, uint8_t no_samples){

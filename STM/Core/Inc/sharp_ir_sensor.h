@@ -12,7 +12,7 @@
 
 #define SENSOR_ADC hadc1
 
-#define NB_OF_CONV 10
+#define NB_OF_CONV 20
 
 void sharp_ir_sensor_start(void);
 uint16_t sharp_ir_sensor_get_raw_value(void);

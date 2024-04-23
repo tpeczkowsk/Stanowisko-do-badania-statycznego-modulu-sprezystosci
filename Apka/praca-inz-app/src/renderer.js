@@ -2,6 +2,7 @@ const { SerialPort } = require("serialport");
 import * as CONST from "./constants.js";
 
 const serial_connect_button = document.querySelector("[data-serial-connect]");
+// Zmienna przechowująca atrybuty listy portów
 const serial_select = document.getElementById("serial-select");
 const serial_status_indicator = document.querySelector("[data-serial-indicator]");
 const button_start = document.querySelector("[data-start]");
@@ -17,24 +18,24 @@ serial_connect_button.addEventListener("click", connectToSelectedPort);
 
 function parseData(data) {
     const buf = data.toString();
-    console.log(`Received: ${buf}`);
-    switch (serial_state) {
-        // polling for connection
-        case 1:
-            if (buf == "Pong") {
-                clearInterval(pollInitialConnectionInterval);
-                serial_state = CONST.SERIAL_STATE_CONNECTED;
-                setStatus(1);
-                button_start.disabled = false;
-                button_stop.disabled = false;
-            }
-            break;
-        // polling for data
-        case 2:
-            break;
-        default:
-            break;
-    }
+    console.log(`${buf}`);
+    // switch (serial_state) {
+    //     // polling for connection
+    //     // case 1:
+    //     //     if (buf == "Pong") {
+    //     //         clearInterval(pollInitialConnectionInterval);
+    //     //         serial_state = CONST.SERIAL_STATE_CONNECTED;
+    //     //         setStatus(1);
+    //     //         button_start.disabled = false;
+    //     //         button_stop.disabled = false;
+    //     //     }
+    //     //     break;
+    //     // // polling for data
+    //     // case 2:
+    //     //     break;
+    //     // default:
+    //     //     break;
+    // }
 }
 
 function connectToSelectedPort() {
@@ -49,7 +50,7 @@ function connectToSelectedPort() {
         });
         port.on("open", () => {
             handlePortOpen();
-            startPollConnection();
+            // startPollConnection();
             console.log(`port ${port.path} is opened`);
         });
         port.on("error", (err) => {
@@ -69,14 +70,20 @@ function connectToSelectedPort() {
         }
     }
 }
-
 async function getSerialPortList() {
+    // Wywołanie metody list() -> zwraca listę dostepnych portów szeregowych
+    // Oczekiwanie na "obietnicę" - Promise z argumentami
     await SerialPort.list().then((ports, err) => {
-        console.log(ports);
+        // wywołanie funkcji ze znalezionymi portami jako argument
+        // Pętla iterująca po każdym porcie
         ports.forEach((port) => {
+            // Utworzenie elementu o typie option
             const option = document.createElement("option");
+            // Przypisanie nazwy portu do wartości elementu
             option.value = port.path;
+            // Przypisanie nazwy portu do tekstu wyświetlanej opcji
             option.textContent = port.path;
+            // Dołączenie elementu do nadrzędnego elementu - listy
             serial_select.appendChild(option);
         });
     });
